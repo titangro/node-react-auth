@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true ,
+    "outDir": "./build",
+    "pretty": true,
+
+    "baseUrl": ".",
+    "types": ["node", "jest"],
+    "typeRoots": [
+        "client/src/types", 
+        "server/src/types"
+    ],
+    "paths": {
+      "@types": ["types"]
+    },
+    "esModuleInterop": true,
+    "moduleResolution": "node" ,
+
+    "noEmit": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+
+    "strict": true ,
+    "module": "ESNext",
+    "jsx": "react",
+    "target": "es5",
+
+    "downlevelIteration": true,
+    "resolveJsonModule": true
+  },
+  "include": ["client/src/**/*.ts", "server/src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "*/**/__tests__/*.ts",
+    "*/**/__tests__/*.tsx",
+  ],
+  "lib": ["es2015"]
+}
