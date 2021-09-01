@@ -18,18 +18,18 @@ const app = express();
 
 // Middlewares
 // TODO: realise initMiddleware
-app.use(express.json()); // to support JSON-encoded bodies
-app.use(express.urlencoded({
-  limit: '50mb',
-  extended: true,
-})); // to support URL-encoded bodies
+app.use([
+  express.json(), // to support JSON-encoded bodies
+  express.urlencoded({
+    limit: '50mb',
+    extended: true,
+  }), // to support URL-encoded bodies
+]);
 
 // Modules
 initializeModules({ app });
 
 app.listen(PORT, HOST, async () => {
-  console.log('Server ready!');
-
   await mongoose
     .connect(DB_CONN, config.db.options)
     .then(() => {

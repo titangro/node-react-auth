@@ -1,13 +1,9 @@
-import { Express } from 'express';
 // import authRouter from './auth';
 
-interface InitializeModules {
-  app: Express;
-  prefix?: string;
-}
+import { InitializeModules } from 'types/modules';
 
 const DEFAULT_PREFIX = '/api';
 
 export const initializeModules = ({ app, prefix = DEFAULT_PREFIX }: InitializeModules) => {
-  // app.use(`${prefix}/auth`, {authRouter});
+  // app.use(`${prefix}/auth`, { authRouter });
 };

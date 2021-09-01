@@ -1,6 +1,6 @@
-import { Request } from 'express';
+import { GetTokenFromHeaders } from 'types/helpers';
 
-export const getTokenFromHeaders = (req: Request) => {
+export const getTokenFromHeaders: GetTokenFromHeaders = (req) => {
   if (!req.headers.authorization) {
     return;
   }
