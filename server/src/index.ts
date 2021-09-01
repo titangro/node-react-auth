@@ -1,31 +1,31 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 import path from 'path';
+import mongoose from 'mongoose';
+
+import { handleError } from './helpers/handleError';
+import {
+  __PROD__, DB_CONN, PORT, HOST,
+} from './constants';
+import { config } from '../config';
 
 import { initializeModules } from './modules';
 
-import { __prod__ } from './constants';
-import { config } from '../config';
-
 path.resolve(__filename);
 
+console.log('DB_CONN ---->', DB_CONN);
+
 const app = express();
-dotenv.config();
-
-const DB_CONN = process.env.DB_CONN || '';
-const PORT = +(process.env.PORT || 3015);
-const HOST = process.env.HOST || '';
-
-const handleError = (error: Record<string, any>) => console.log(error);
 
 // Middlewares
 // TODO: realise initMiddleware
-app.use(express.json());
-// app.use(express.urlencoded());
+app.use(express.json()); // to support JSON-encoded bodies
+app.use(express.urlencoded({
+  limit: '50mb',
+  extended: true,
+})); // to support URL-encoded bodies
 
 // Modules
-initializeModules(app, '/api');
+initializeModules({ app });
 
 app.listen(PORT, HOST, async () => {
   console.log('Server ready!');
@@ -37,5 +37,5 @@ app.listen(PORT, HOST, async () => {
     })
     .catch((error) => handleError(error));
 
-  console.log('Listening on port ', PORT);
+  console.log(`Server running at http://${HOST}:${PORT}/`);
 });

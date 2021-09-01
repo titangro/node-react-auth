@@ -5,14 +5,13 @@
     "outDir": "./build",
     "pretty": true,
 
-    "baseUrl": ".",
-    "types": ["node", "jest"],
+    "baseUrl": "./src",
+    "types": ["node"],
     "typeRoots": [
-        "client/src/types", 
-        "server/src/types"
+        "./src/types", 
     ],
     "paths": {
-      "@types": ["types"]
+      "@types": ["./src/types"]
     },
     "esModuleInterop": true,
     "moduleResolution": "node" ,
@@ -22,14 +21,14 @@
     "experimentalDecorators": true,
 
     "strict": true ,
-    "module": "ESNext",
+    "module": "commonjs",
     "jsx": "react",
     "target": "es5",
 
     "downlevelIteration": true,
     "resolveJsonModule": true
   },
-  "include": ["client/src/**/*.ts", "server/src/**/*.ts"],
+  "include": ["./src/**/*.ts"],
   "exclude": [
     "node_modules",
     "*/**/__tests__/*.ts",

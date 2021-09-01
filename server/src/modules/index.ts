@@ -1,16 +1,13 @@
 import { Express } from 'express';
-import contactsRouter from './contacts';
-import authRouter from './auth';
-import groupRouter from './groups';
+// import authRouter from './auth';
 
-export const initializeModules = (app: Express, urlPrefix: string) => {
-  app.use(`${urlPrefix}/contacts`, contactsRouter);
-  app.use(`${urlPrefix}/auth`, authRouter);
-  app.use(`${urlPrefix}/groups`, groupRouter);
-  // TODO: realize other module imports
+interface InitializeModules {
+  app: Express;
+  prefix?: string;
+}
+
+const DEFAULT_PREFIX = '/api';
+
+export const initializeModules = ({ app, prefix = DEFAULT_PREFIX }: InitializeModules) => {
+  // app.use(`${prefix}/auth`, {authRouter});
 };
-
-// TODO: add genarations
-// 1 itterate in modules
-// 2 require each module by folder name
-// 3 logger modules required
