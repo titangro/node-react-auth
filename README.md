@@ -2,5 +2,5 @@
 
 ## install
 
-# 1. start command - yarn
-# 2. start command - yarn all-install
+### 1. start command - yarn install:all
+### 2. start command - yarn start
