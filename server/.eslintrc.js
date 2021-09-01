@@ -27,6 +27,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-shadow': 'off',
     'no-underscore-dangle': 'off',
     'no-console': 'off',
     'consistent-return': 'off',
