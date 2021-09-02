@@ -43,5 +43,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "author": "Roman Grankov <mustbe09@yandex.ru>",
+  "license": "ISC"
 }
