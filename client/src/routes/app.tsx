@@ -3,13 +3,15 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
 } from 'react-router-dom';
 
 import { AppLaout } from 'components/layouts/app-layout';
 
-import { Main } from './main';
+import { PublicRoute } from 'components/routing/public-route';
+import { PrivateRoute } from 'components/routing/private-route';
+import { Login } from './login';
 import { Profile } from './profile';
+import paths from './paths';
 
 export const App: React.FC = () => {
   console.log('App -->');
@@ -21,12 +23,12 @@ export const App: React.FC = () => {
 
         test
         <Switch>
-          <Route path="/profile">
+          <PrivateRoute path={paths.profile}>
             <Profile />
-          </Route>
-          <Route path="/">
-            <Main />
-          </Route>
+          </PrivateRoute>
+          <PublicRoute path={paths.login}>
+            <Login />
+          </PublicRoute>
         </Switch>
       </Router>
     </AppLaout>
