@@ -1,10 +1,18 @@
 import React from 'react';
+import classNamesBind from 'classnames/bind';
 
-import { Container, Button } from 'react-materialize';
+import { Container } from 'react-materialize';
 
-export const AppLaout: React.FC = ({ children }) => (
-  <Container>
-    <Button>Button</Button>
-    {children}
-  </Container>
-);
+import styles from './style.scss';
+
+const cn = classNamesBind.bind(styles);
+
+export const AppLaout: React.FC = ({ children }) => {
+  console.log('App layout -->');
+
+  return (
+    <Container className={cn('app-layout')}>
+      {children}
+    </Container>
+  );
+};

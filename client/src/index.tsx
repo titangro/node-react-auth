@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { App } from 'components/common/app';
 import reportWebVitals from 'utils/common/reportWebVitals';
+import { App } from './routes/app';
 
-import 'assets/css/style.css';
+import 'assets/css/style.scss';
 import 'materialize-css';
 
 ReactDOM.render(

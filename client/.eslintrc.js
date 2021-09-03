@@ -27,6 +27,8 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'react/no-array-index-key': 'off',
+    'arrow-body-style': 'off',
     'react/prop-types': 'off',
     'no-use-before-define': 'off',
     'no-shadow': 'off',
