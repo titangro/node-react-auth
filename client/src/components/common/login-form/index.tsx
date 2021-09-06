@@ -1,4 +1,5 @@
 import React from 'react';
+import useSWR from 'swr';
 import { useForm, FormProvider } from 'react-hook-form';
 import {
   Row, Button,
@@ -12,6 +13,8 @@ import { getWithBigFirstLetter } from 'utils/helpers/getWithBigFirstLetter';
 
 import { Input } from 'components/common/input';
 import { FormErrors } from 'components/common/form-errors/input';
+import { authRoute } from 'utils/services/routes/auth';
+import { fetcher } from 'utils/api/fetcher';
 import { LoginFormProps, LoginFormKeys } from './types';
 import { schema } from './schema';
 
@@ -26,11 +29,19 @@ export const LoginForm: React.FC = () => {
 
   console.log('🚀 ~ file: index.tsx ~ line 19 ~ errors', errors);
 
-  const onSumbit = handleSubmit((data) => {
+  const onSumbit = handleSubmit(async ({ email, password }) => {
     // !TODO: add login fetcher
-    console.log(data);
 
-    history.push(paths.profile);
+    const requestData = authRoute.login({
+      email,
+      password,
+    });
+
+    const response = await fetcher({ ...requestData });
+
+    console.log('🚀 ~ file: index.tsx ~ line 41 ~ onSumbit ~ response', response);
+
+    // history.push(paths.profile);
   });
 
   const hasErrors = Boolean(Object.keys(errors).length);
