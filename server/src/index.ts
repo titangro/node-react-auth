@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import { handleError } from './helpers/handleError';
 import {
-  __PROD__, DB_CONN, PORT, HOST,
+  DB_CONN, PORT, HOST,
 } from './constants';
 import { config } from '../config';
 
