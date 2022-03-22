@@ -13,18 +13,13 @@ export const FormErrors: React.FC<FormErrorsProps> = ({ errors }) => {
   return (
     <Row>
       <Collection>
-        {errorsList.map(
-          ([errorKey, error]) => (
-            <CollectionItem key={errorKey} className={cn('error')}>
-              Field &quot;
-              {errorKey}
-              &quot;
-              :
-              {' '}
-              {error.message}
-            </CollectionItem>
-          ),
-        )}
+        {errorsList.map(([errorKey, error]) => (
+          <CollectionItem key={errorKey} className={cn('error')}>
+            Field &quot;
+            {errorKey}
+            &quot; : {error.message}
+          </CollectionItem>
+        ))}
       </Collection>
     </Row>
   );

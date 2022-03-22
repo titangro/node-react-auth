@@ -1,10 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: [
-    'react',
-    'filenames',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', 'filenames', '@typescript-eslint'],
   env: {
     browser: true,
     node: true,
@@ -15,10 +11,7 @@ module.exports = {
     shallow: true,
     mount: true,
   },
-  extends: [
-    'airbnb',
-    'plugin:react/recommended',
-  ],
+  extends: ['airbnb', 'plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -38,22 +31,29 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/member-delimiter-style': [1, {
-      multiline: {
-        delimiter: 'semi',
-        requireLast: true,
+    'linebreak-style': ['error', 'windows'],
+    '@typescript-eslint/member-delimiter-style': [
+      1,
+      {
+        multiline: {
+          delimiter: 'semi',
+          requireLast: true,
+        },
+        singleline: {
+          delimiter: 'comma',
+          requireLast: false,
+        },
       },
-      singleline: {
-        delimiter: 'comma',
-        requireLast: false,
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        args: 'after-used',
+        ignoreRestSiblings: false,
+        varsIgnorePattern: '^React$|^_$',
       },
-    }],
-    '@typescript-eslint/no-unused-vars': ['warn', {
-      vars: 'all',
-      args: 'after-used',
-      ignoreRestSiblings: false,
-      varsIgnorePattern: '^React$|^_$',
-    }],
+    ],
     curly: [1, 'all'],
     'brace-style': [1, '1tbs', { allowSingleLine: true }],
     'import/extensions': 'off',
@@ -66,27 +66,29 @@ module.exports = {
     'padding-line-between-statements': [
       'warn',
       { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-      { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
     ],
-    'react/sort-comp': [1, {
-      order: [
-        'static-variables',
-        'static-methods',
-        'instance-variables',
-        'lifecycle',
-        'everything-else',
-        'render',
-      ],
-    }],
+    'react/sort-comp': [
+      1,
+      {
+        order: [
+          'static-variables',
+          'static-methods',
+          'instance-variables',
+          'lifecycle',
+          'everything-else',
+          'render',
+        ],
+      },
+    ],
     'react/jsx-filename-extension': [
       'error',
       {
-        extensions: [
-          '.js',
-          '.jsx',
-          '.ts',
-          '.tsx',
-        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     ],
   },
