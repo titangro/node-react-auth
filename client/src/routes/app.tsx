@@ -1,9 +1,6 @@
 import React from 'react';
 
-import {
-  BrowserRouter as Router,
-  Switch,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import { AppLaout } from 'components/layouts/app-layout';
 
@@ -14,14 +11,9 @@ import { Profile } from './profile';
 import paths from './paths';
 
 export const App: React.FC = () => {
-  console.log('App -->');
-
-  // !TODO: add layout
   return (
     <AppLaout>
       <Router>
-
-        test
         <Switch>
           <PrivateRoute path={paths.profile}>
             <Profile />
