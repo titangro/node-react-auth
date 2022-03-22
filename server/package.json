@@ -4,19 +4,21 @@
   "description": "node-react-auth",
   "main": "index.ts",
   "scripts": {
-    "start": "dev",
-    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec NODE_PATH=./src ts-node ./src/index.ts",
+    "start": "npm run dev",
+    "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec cross-env NODE_PATH=./src ts-node ./src/index.ts",
     "watch": "tsc -w",
     "server-install": "install"
   },
   "dependencies": {
     "argon2": "^0.27.0",
     "bcrypt": "^5.0.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mikro-orm": "^3.6.15",
     "mongoose": "^5.9.27",
+    "node-react-auth": "file:..",
     "passport": "^0.4.1"
   },
   "devDependencies": {
