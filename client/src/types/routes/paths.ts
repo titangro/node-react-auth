@@ -1,3 +1,3 @@
-import paths from 'routes/paths';
+import { paths } from 'routes/paths';
 
 export type NavKey = keyof typeof paths;

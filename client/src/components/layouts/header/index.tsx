@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 import { Navbar, NavItem, Icon } from 'react-materialize';
 
-import paths from 'routes/paths';
+import { paths } from 'routes/paths';
 import { NavKey } from 'types/routes/paths';
 import { logo } from 'utils/constants';
+import { getWithBigFirstLetter } from 'utils/helpers/getWithBigFirstLetter';
 
 export const Header: React.FC = () => (
   <Navbar
@@ -23,8 +24,9 @@ export const Header: React.FC = () => (
   >
     {Object.keys(paths).map((navKey) => (
       <NavItem
+        key={navKey}
         href={paths[navKey as NavKey]}
-      >{`${navKey[0].toUpperCase()}${navKey.slice(1)}`}</NavItem>
+      >{`${getWithBigFirstLetter(navKey)}`}</NavItem>
     ))}
   </Navbar>
 );

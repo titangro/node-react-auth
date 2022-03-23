@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import reportWebVitals from './utils/common/reportWebVitals';
-import { App } from './routes/app';
+import App from './routes/app';
 
 import 'assets/css/style.scss';
 import 'materialize-css';

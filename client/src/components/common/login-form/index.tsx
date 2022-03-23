@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useHistory } from 'react-router-dom';
 
 // @ts-ignore
-import paths from 'routes/paths';
+import { paths } from 'routes/paths';
 import { getWithBigFirstLetter } from 'utils/helpers/getWithBigFirstLetter';
 
 import { Input } from 'components/common/input';

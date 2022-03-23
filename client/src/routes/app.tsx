@@ -8,9 +8,10 @@ import { PublicRoute } from 'components/routing/public-route';
 import { PrivateRoute } from 'components/routing/private-route';
 import { Login } from './login';
 import { Profile } from './profile';
-import paths from './paths';
+import { paths } from './paths';
+import { withAppData } from 'hocs/withAppData';
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <Router>
       <AppLaout>
@@ -23,3 +24,5 @@ export const App: React.FC = () => {
     </Router>
   );
 };
+
+export default withAppData(App);
