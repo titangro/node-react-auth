@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import { AppLaout } from 'components/layouts/app-layout';
 
@@ -12,17 +12,14 @@ import paths from './paths';
 
 export const App: React.FC = () => {
   return (
-    <AppLaout>
-      <Router>
+    <Router>
+      <AppLaout>
         <Switch>
-          <PrivateRoute path={paths.profile}>
-            <Profile />
-          </PrivateRoute>
-          <PublicRoute path={paths.login}>
-            <Login />
-          </PublicRoute>
+          <PublicRoute exact path={paths.login} component={Login} />
+          <PrivateRoute exact path={paths.profile} component={Profile} />
+          <Redirect to={paths.login} />
         </Switch>
-      </Router>
-    </AppLaout>
+      </AppLaout>
+    </Router>
   );
 };

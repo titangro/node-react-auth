@@ -5,14 +5,20 @@ import { checkIsAutharized } from 'utils/helpers/checkIsAutharized';
 // @ts-ignore
 import paths from 'routes/paths';
 
-export const PrivateRoute: React.FC<RouteProps> = ({ children, ...rest }) => {
+export const PrivateRoute: React.FC<RouteProps> = ({
+  children,
+  component,
+  ...rest
+}) => {
   // !TODO: add check isLogin
 
   const isLogin = checkIsAutharized();
 
+  const resderedComponent = component || children;
+
   return (
     <Route {...rest}>
-      {isLogin ? children : <Redirect to={paths.login} />}
+      {isLogin ? resderedComponent : <Redirect to={paths.login} />}
     </Route>
   );
 };

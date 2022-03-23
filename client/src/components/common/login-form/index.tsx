@@ -1,9 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { useForm, FormProvider } from 'react-hook-form';
-import {
-  Row, Button,
-} from 'react-materialize';
+import { Row, Button } from 'react-materialize';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useHistory } from 'react-router-dom';
 
@@ -25,7 +23,10 @@ export const LoginForm: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const { handleSubmit, formState: { errors } } = formMethods;
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = formMethods;
 
   console.log('🚀 ~ file: index.tsx ~ line 19 ~ errors', errors);
 
@@ -39,7 +40,10 @@ export const LoginForm: React.FC = () => {
 
     const response = await fetcher({ ...requestData });
 
-    console.log('🚀 ~ file: index.tsx ~ line 41 ~ onSumbit ~ response', response);
+    console.log(
+      '🚀 ~ file: index.tsx ~ line 41 ~ onSumbit ~ response',
+      response,
+    );
 
     // history.push(paths.profile);
   });
@@ -71,9 +75,7 @@ export const LoginForm: React.FC = () => {
           </Row>
           {hasErrors && <FormErrors errors={errors} />}
           <Row>
-            <Button>
-              Send
-            </Button>
+            <Button>Send</Button>
           </Row>
         </form>
       </FormProvider>
