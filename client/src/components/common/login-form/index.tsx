@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useSWR from 'swr';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Row, Button } from 'react-materialize';
@@ -15,9 +15,12 @@ import { authRoute } from 'utils/services/routes/auth';
 import { fetcher } from 'utils/api/fetcher';
 import { LoginFormProps, LoginFormKeys } from './types';
 import { schema } from './schema';
+import { AuthContext } from 'hocs/contexts/withAuth';
+import { useEffect } from 'react';
 
 export const LoginForm: React.FC = () => {
   const history = useHistory();
+  const { authorize, isAuthorized } = useContext(AuthContext);
 
   const formMethods = useForm<LoginFormProps>({
     resolver: zodResolver(schema),
@@ -38,14 +41,18 @@ export const LoginForm: React.FC = () => {
       password,
     });
 
-    const response = await fetcher({ ...requestData });
+    try {
+      const response = await fetcher({ ...requestData });
+      // authorize();
 
-    console.log(
-      '🚀 ~ file: index.tsx ~ line 41 ~ onSumbit ~ response',
-      response,
-    );
+      // history.push(paths.profile);
+    } catch (error) {
+      // TODO: fix connection to mongo db
+      authorize();
 
-    // history.push(paths.profile);
+      history.push(paths.profile);
+      console.log('Error on response auth -->', error);
+    }
   });
 
   const hasErrors = Boolean(Object.keys(errors).length);

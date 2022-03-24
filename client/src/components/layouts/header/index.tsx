@@ -23,10 +23,10 @@ export const Header: React.FC = () => (
     centerChildren
   >
     {Object.keys(paths).map((navKey) => (
-      <NavItem
+      <NavLink
         key={navKey}
-        href={paths[navKey as NavKey]}
-      >{`${getWithBigFirstLetter(navKey)}`}</NavItem>
+        to={paths[navKey as NavKey]}
+      >{`${getWithBigFirstLetter(navKey)}`}</NavLink>
     ))}
   </Navbar>
 );
