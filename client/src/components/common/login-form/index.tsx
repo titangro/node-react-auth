@@ -11,16 +11,13 @@ import { getWithBigFirstLetter } from 'utils/helpers/getWithBigFirstLetter';
 
 import { Input } from 'components/common/input';
 import { FormErrors } from 'components/common/form-errors/input';
-import { authRoute } from 'utils/services/routes/auth';
-import { fetcher } from 'utils/api/fetcher';
 import { LoginFormProps, LoginFormKeys } from './types';
 import { schema } from './schema';
-import { AuthContext } from 'hocs/contexts/withAuth';
-import { useEffect } from 'react';
+import { useAuth } from 'hooks/useAuth';
 
 export const LoginForm: React.FC = () => {
   const history = useHistory();
-  const { authorize, isAuthorized } = useContext(AuthContext);
+  const { signIn } = useAuth();
 
   const formMethods = useForm<LoginFormProps>({
     resolver: zodResolver(schema),
@@ -31,26 +28,30 @@ export const LoginForm: React.FC = () => {
     formState: { errors },
   } = formMethods;
 
-  console.log('🚀 ~ file: index.tsx ~ line 19 ~ errors', errors);
+  // only for test
+  // console.log('🚀 ~ file: index.tsx ~ line 19 ~ errors', errors);
+
+  const login = () => {
+    signIn(() => {
+      history.replace(paths.profile);
+    });
+  };
 
   const onSumbit = handleSubmit(async ({ email, password }) => {
-    // !TODO: add login fetcher
+    // TODO: try fix connection to mongo db
+    // const requestData = authRoute.login({
+    //   email,
+    //   password,
+    // });
 
-    const requestData = authRoute.login({
-      email,
-      password,
-    });
+    // only for test
+    login();
 
     try {
-      const response = await fetcher({ ...requestData });
+      // TODO: rewrite checking user on SQL
+      // const response = await fetcher({ ...requestData });
       // authorize();
-
-      // history.push(paths.profile);
     } catch (error) {
-      // TODO: fix connection to mongo db
-      authorize();
-
-      history.push(paths.profile);
       console.log('Error on response auth -->', error);
     }
   });
