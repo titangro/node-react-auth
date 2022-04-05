@@ -2,5 +2,8 @@
 
 ## install
 
-### 1. start command - yarn install:all to install all dependencies
-### 2. start command - yarn start to start client and server
+### 1. start command - npm install to install concurrently
+
+### 2. start command - npm run install:all to install all dependencies
+
+### 3. start command - npm start to start client and server

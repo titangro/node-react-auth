@@ -10,7 +10,9 @@ import { paths } from 'routes/paths';
 import { getWithBigFirstLetter } from 'utils/helpers/getWithBigFirstLetter';
 
 import { Input } from 'components/common/input';
-import { FormErrors } from 'components/common/form-errors/input';
+import { FormErrors } from 'components/common/form-errors';
+import { authRoute } from 'utils/services/routes/auth';
+import { fetcher } from 'utils/api/fetcher';
 import { LoginFormProps, LoginFormKeys } from './types';
 import { schema } from './schema';
 import { useAuth } from 'hooks/useAuth';
@@ -47,13 +49,9 @@ export const LoginForm: React.FC = () => {
     // only for test
     login();
 
-    try {
-      // TODO: rewrite checking user on SQL
-      // const response = await fetcher({ ...requestData });
-      // authorize();
-    } catch (error) {
-      console.log('Error on response auth -->', error);
-    }
+    // const response = await fetcher({ ...requestData });
+
+    // history.push(paths.profile);
   });
 
   const hasErrors = Boolean(Object.keys(errors).length);
