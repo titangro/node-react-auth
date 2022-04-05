@@ -17,7 +17,8 @@ export const FormErrors: React.FC<FormErrorsProps> = ({ errors }) => {
           <CollectionItem key={errorKey} className={cn('error')}>
             Field &quot;
             {errorKey}
-            &quot; : {error.message}
+            &quot;&nbsp;:&nbsp;
+            {error.message}
           </CollectionItem>
         ))}
       </Collection>
