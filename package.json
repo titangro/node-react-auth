@@ -8,7 +8,7 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "install:server": "npm install --prefix server",
     "install:client": "npm install --prefix client",
-    "install:all": "concurrently  \"npm install\" \"npm install --prefix server\" \"npm install --prefix client\"",
+    "install:all": "concurrently \"npm install --prefix server\" \"npm install --prefix client\"",
     "eslint:check": "npm run eslint"
   },
   "dependencies": {
