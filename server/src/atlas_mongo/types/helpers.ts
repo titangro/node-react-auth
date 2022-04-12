@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { User } from 'types/users';
+import { User } from 'atlas_mongo/types/users';
 
 export type GetTokenFromHeaders = (req: Request) => string | undefined;
 
@@ -8,10 +8,11 @@ type GetResponseErrorProps = {
   res: Response;
   statusCode?: number;
   error?: Error | string;
-}
+};
 
-export type GetResponseError = (props: GetResponseErrorProps) =>
-  Response<any, Record<string, unknown>>;
+export type GetResponseError = (
+  props: GetResponseErrorProps,
+) => Response<any, Record<string, unknown>>;
 
 export type HandleError = (error: Error) => void;
 
@@ -27,6 +28,6 @@ export enum ExpiresIn {
 type GenerateJWTProps = {
   user: User;
   expiresIn?: ExpiresIn;
-}
+};
 
 export type GenerateJWT = (props: GenerateJWTProps) => void;

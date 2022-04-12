@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
-import { generateJWT } from 'helpers/generateJWT';
+import { generateJWT } from 'atlas_mongo/helpers/generateJWT';
 
-import { getResponseError } from 'helpers/getResponseError';
-import { Controller } from 'types/request';
+import { getResponseError } from 'atlas_mongo/helpers/getResponseError';
+import { Controller } from 'atlas_mongo/types/request';
 import { UserModel } from './model';
 
 export const login: Controller = async (req, res) => {
@@ -40,13 +40,15 @@ export const login: Controller = async (req, res) => {
       throw new Error('Incorrect password');
     }
 
-    return res.json(generateJWT({
-      user: userRecord,
-    }));
+    return res.json(
+      generateJWT({
+        user: userRecord,
+      }),
+    );
   } catch (error) {
     return getResponseError({
       res,
-      error,
+      error: error as Error,
     });
   }
 };
@@ -78,13 +80,15 @@ export const signUp: Controller = async (req, res) => {
       name,
     });
 
-    return res.json(generateJWT({
-      user: userRecord,
-    }));
+    return res.json(
+      generateJWT({
+        user: userRecord,
+      }),
+    );
   } catch (error) {
     return getResponseError({
       res,
-      error,
+      error: error as Error,
     });
   }
 };

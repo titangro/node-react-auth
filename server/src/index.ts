@@ -1,18 +1,9 @@
 import express from 'express';
-import path from 'path';
-import mongoose from 'mongoose';
 
-import { handleError } from './helpers/handleError';
-import {
-  DB_CONN, PORT, HOST,
-} from './constants';
-import { config } from '../config';
+import { atlas_mongo } from './atlas_mongo';
+import { static_mongo } from './static_mongo';
 
-import { initializeModules } from './modules';
-
-path.resolve(__filename);
-
-console.log('DB_CONN ---->', DB_CONN);
+const USE_STATIC = true;
 
 const app = express();
 
@@ -26,16 +17,11 @@ app.use([
   }), // to support URL-encoded bodies
 ]);
 
-// Modules
-initializeModules({ app });
+((app) => {
+  if (USE_STATIC) {
+    static_mongo(app);
+    return;
+  }
 
-app.listen(PORT, HOST, async () => {
-  await mongoose
-    .connect(DB_CONN, config.db.options)
-    .then(() => {
-      console.log('MONGO IS CONNECTED');
-    })
-    .catch((error) => handleError(error));
-
-  console.log(`Server running at http://${HOST}:${PORT}/`);
-});
+  atlas_mongo(app);
+})(app);
