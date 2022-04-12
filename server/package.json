@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mikro-orm": "^3.6.15",
+    "mongodb": "^4.5.0",
     "mongoose": "^5.9.27",
     "node-react-auth": "file:..",
     "passport": "^0.4.1"

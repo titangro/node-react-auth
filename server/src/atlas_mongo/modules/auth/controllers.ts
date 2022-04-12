@@ -1,8 +1,7 @@
 import bcrypt from 'bcrypt';
-import { generateJWT } from 'atlas_mongo/helpers/generateJWT';
-
-import { getResponseError } from 'atlas_mongo/helpers/getResponseError';
-import { Controller } from 'atlas_mongo/types/request';
+import { generateJWT } from '../../helpers/generateJWT';
+import { getResponseError } from '../../helpers/getResponseError';
+import { Controller } from '../../types/request';
 import { UserModel } from './model';
 
 export const login: Controller = async (req, res) => {

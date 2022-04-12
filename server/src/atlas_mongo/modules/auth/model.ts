@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { User, UserRoles } from 'atlas_mongo/types/users';
+import { User, UserRoles } from '../../types/users';
 
 const userSchema = new Schema({
   email: {

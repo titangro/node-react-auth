@@ -1,4 +1,4 @@
-import { InitializeModules } from 'atlas_mongo/types/modules';
+import { InitializeModules } from '../types/modules';
 import authRouter from './auth';
 
 const DEFAULT_PREFIX = '/api';

@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 
 import { atlas_mongo } from './atlas_mongo';
 import { static_mongo } from './static_mongo';
@@ -16,6 +17,8 @@ app.use([
     extended: true,
   }), // to support URL-encoded bodies
 ]);
+
+path.resolve(__filename);
 
 ((app) => {
   if (USE_STATIC) {

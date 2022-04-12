@@ -1,4 +1,4 @@
-import { GetTokenFromHeaders } from 'atlas_mongo/types/helpers';
+import { GetTokenFromHeaders } from '../types/helpers';
 
 export const getTokenFromHeaders: GetTokenFromHeaders = (req) => {
   if (!req.headers.authorization) {

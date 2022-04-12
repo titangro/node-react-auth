@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { User } from 'atlas_mongo/types/users';
+import { User } from './users';
 
 export type GetTokenFromHeaders = (req: Request) => string | undefined;
 
