@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
-import { generateJWT } from '../../helpers/generateJWT';
-import { getResponseError } from '../../helpers/getResponseError';
-import { Controller } from '../../types/request';
+import { generateJWT } from 'helpers/generateJWT';
+import { getResponseError } from 'helpers/getResponseError';
+import { Controller } from 'types/request';
 import { UserModel } from './model';
 
 export const login: Controller = async (req, res) => {

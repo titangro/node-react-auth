@@ -1,7 +1,21 @@
+import mongoose, { ConnectOptions } from 'mongoose';
 import { MongoClient, Callback } from 'mongodb';
-import { DB_CONN_MONGO_STATIC } from './constants';
+import { DbMongoType } from 'types';
+import { handleError } from './handleError';
+import { DB_CONN_MONGO_STATIC, DB_CONN_MONGO_ATLAS } from './constants';
 
-export const mongoClient = new MongoClient(DB_CONN_MONGO_STATIC);
+const getConnectionMongoPath = (type: DbMongoType) => {
+  const paths = {
+    [DbMongoType.Static]: DB_CONN_MONGO_STATIC,
+    [DbMongoType.Atlas]: DB_CONN_MONGO_ATLAS,
+  };
+
+  return paths[type];
+};
+
+const connectionMongoPath = getConnectionMongoPath(DbMongoType.Static);
+
+export const mongoClient = new MongoClient(connectionMongoPath);
 
 export const runMongoClient = async (cb?: Callback) => {
   try {
@@ -15,4 +29,13 @@ export const runMongoClient = async (cb?: Callback) => {
   } finally {
     await mongoClient.close();
   }
+};
+
+export const runMongoose = (options?: ConnectOptions) => {
+  mongoose
+    .connect(connectionMongoPath, options)
+    .then(() => {
+      console.log('MONGO IS CONNECTED');
+    })
+    .catch(handleError);
 };

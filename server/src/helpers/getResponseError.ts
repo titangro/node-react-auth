@@ -1,4 +1,4 @@
-import { GetResponseError } from '../types/helpers';
+import { GetResponseError } from 'types/helpers';
 
 const DEFAULT_ERROR_MESSAGE = 'Unknown error exeption!';
 const DEFAULT_STATUS_CODE = 500;

@@ -2,12 +2,8 @@ import { DbMongoType } from './types/index';
 import express from 'express';
 import path from 'path';
 
-import { atlas_mongo } from './atlas_mongo';
-import { static_mongo } from './static_mongo';
-import { getDbTypePath } from 'helpers';
+import { getDbTypePath } from './helpers/getDbTypePath';
 import { DbType } from 'types';
-
-const USE_STATIC = true;
 
 const app = express();
 

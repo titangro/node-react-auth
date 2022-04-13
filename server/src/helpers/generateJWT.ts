@@ -1,4 +1,4 @@
-import { ExpiresIn, GenerateJWT } from '../types/helpers';
+import { ExpiresIn, GenerateJWT } from 'types/helpers';
 
 import * as jwt from 'jsonwebtoken';
 
