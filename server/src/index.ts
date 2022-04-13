@@ -1,8 +1,11 @@
+import { DbMongoType } from './types/index';
 import express from 'express';
 import path from 'path';
 
 import { atlas_mongo } from './atlas_mongo';
 import { static_mongo } from './static_mongo';
+import { getDbTypePath } from 'helpers';
+import { DbType } from 'types';
 
 const USE_STATIC = true;
 
@@ -21,10 +24,10 @@ app.use([
 path.resolve(__filename);
 
 ((app) => {
-  if (USE_STATIC) {
-    static_mongo(app);
-    return;
-  }
+  const funcWithBdConnector = getDbTypePath({
+    dbType: DbType.Mongo,
+    subDbType: DbMongoType.Static,
+  });
 
-  atlas_mongo(app);
+  funcWithBdConnector(app);
 })(app);

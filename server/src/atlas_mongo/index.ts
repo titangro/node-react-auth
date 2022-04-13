@@ -2,7 +2,7 @@ import { Express } from 'express';
 import mongoose from 'mongoose';
 
 import { handleError } from './helpers/handleError';
-import { DB_CONN, PORT, HOST } from './constants';
+import { DB_CONN, PORT, HOST } from 'helpers/constants';
 import { config } from './config';
 
 import { initializeModules } from './modules';
