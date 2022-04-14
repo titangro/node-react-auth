@@ -6,21 +6,17 @@ import { UserModel } from './model';
 
 export const login: Controller = async (req, res) => {
   try {
-    // получаем данные Post запроса
     const { email, password } = req.body;
 
-    // исключение при отсутсвии email
     if (!email) {
       throw new Error('User email is wrong');
     }
 
-    // поиск существующего пользователя по email
     const userRecord = await UserModel.findOne({
       email,
     });
 
     if (!userRecord) {
-      // исключение если пользователь не найден
       return getResponseError({
         res,
         error: 'User not found',
@@ -28,14 +24,12 @@ export const login: Controller = async (req, res) => {
       });
     }
 
-    // сравнение хешей паролей
-    const isCorrectPassword = await bcrypt.compare(
+    const isCorrectpassword = await bcrypt.compare(
       password,
       userRecord.password,
     );
 
-    if (!isCorrectPassword) {
-      // исключение если пароли разные
+    if (!isCorrectpassword) {
       throw new Error('Incorrect password');
     }
 
@@ -54,29 +48,25 @@ export const login: Controller = async (req, res) => {
 
 export const signUp: Controller = async (req, res) => {
   try {
-    // получаем данные Post запроса из body, хешируем пароль
     const { password, name, email } = req.body;
-    const passwordHashed = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // поиск уже зарегистрированного пользователя
-    const createdUser = await UserModel.findOne({
+    const createdUser = await UserModel.findOneAndDelete({
       email,
     });
 
-    // если пользователь уже существует, кидаем исключение
     if (createdUser) {
       return getResponseError({
         res,
-        error: 'Such user already exists',
+        error: 'Such user  already exists',
         statusCode: 401,
       });
     }
 
-    // создаем пользователя
     const userRecord = await UserModel.create({
-      password: passwordHashed,
       email,
       name,
+      password: hashedPassword,
     });
 
     return res.json(

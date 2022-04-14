@@ -25,9 +25,9 @@ export enum ExpiresIn {
   '365d' = '365d',
 }
 
-type GenerateJWTProps = {
+type GenerateJwtProps = {
   user: User;
   expiresIn?: ExpiresIn;
 };
 
-export type GenerateJWT = (props: GenerateJWTProps) => void;
+export type GenerateJwt = (props: GenerateJwtProps) => void;

@@ -1,5 +1,6 @@
 import { DEFAULT_PREFIX } from 'helpers/constants';
 import { InitializeModules } from 'types/modules';
+
 import authRouter from './auth';
 
 export const initializeModules = ({

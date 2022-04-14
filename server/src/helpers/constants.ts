@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 
+export const DEFAULT_PREFIX = '/api';
+
 export const __PROD__ = process.env.NODE_ENV === 'production';
 
 dotenv.config();
