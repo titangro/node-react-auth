@@ -1,9 +1,12 @@
 import { DbMongoType } from './types/index';
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 
-import { getDbTypePath } from './utils/helpers/getDbTypePath';
+import { getDbTypePath } from 'utils/helpers/getDbTypePath';
+import { PORT, HOST } from 'utils/helpers/constants';
 import { DbType } from 'types';
+import { Callback } from 'mongoose';
 
 const app = express();
 
@@ -15,6 +18,9 @@ app.use([
     limit: '50mb',
     extended: true,
   }), // to support URL-encoded bodies
+  cors({
+    origin: '',
+  }),
 ]);
 
 path.resolve(__filename);
@@ -25,5 +31,13 @@ path.resolve(__filename);
     subDbType: DbMongoType.Static,
   });
 
-  funcWithBdConnector(app);
+  funcWithBdConnector(app, (cb: () => void) =>
+    app.listen(PORT, HOST, () => {
+      console.log(`Server running at http://${HOST}:${PORT}/`);
+
+      if (cb) {
+        cb();
+      }
+    }),
+  );
 })(app);

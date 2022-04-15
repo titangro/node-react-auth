@@ -2,11 +2,14 @@ import mongoose, { ConnectOptions } from 'mongoose';
 import { MongoClient, Callback } from 'mongodb';
 import { DbMongoType } from 'types';
 import { handleError } from './handleError';
-import { DB_CONN_MONGO_STATIC, DB_CONN_MONGO_ATLAS } from './constants';
+import { DB_CONN_MONGO_ATLAS } from './constants';
+import { dbConfig } from 'utils/config';
+
+const { HOST, PORT, DB } = dbConfig;
 
 const getConnectionMongoPath = (type: DbMongoType) => {
   const paths = {
-    [DbMongoType.Static]: DB_CONN_MONGO_STATIC,
+    [DbMongoType.Static]: `mongodb://${HOST}:${PORT}/${DB}`,
     [DbMongoType.Atlas]: DB_CONN_MONGO_ATLAS,
   };
 
@@ -35,7 +38,11 @@ export const runMongoose = (options?: ConnectOptions) => {
   mongoose
     .connect(connectionMongoPath, options)
     .then(() => {
-      console.log('MONGO IS CONNECTED');
+      console.log(
+        'MONGO IS CONNECTED with connectionMongoPath, options --> ',
+        connectionMongoPath,
+        options,
+      );
     })
     .catch(handleError);
 };

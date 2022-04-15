@@ -15,7 +15,7 @@ const userSchema = new Schema({
   name: String,
   role: {
     type: String,
-    default: UserRoles.Default,
+    default: UserRoles.User,
   },
 });
 

@@ -1,18 +1,20 @@
 import { Express } from 'express';
-import { config } from 'utils/config';
-import { PORT, HOST } from 'utils/helpers/constants';
+import { dbConfig } from 'utils/config';
 import { runMongoose } from 'utils/helpers/mongoClient';
 
 import { initializeModules } from './modules';
 
-export const static_mongo = (app: Express) => {
+export const static_mongo = (
+  app: Express,
+  listener: (cb: () => void) => void,
+) => {
   console.log('STATIC MONGO TEST --->');
 
-  app.listen(PORT, HOST, async () => {
-    console.log(`Server running at http://${HOST}:${PORT}/`);
+  initializeModules({ app });
 
-    initializeModules({ app });
+  listener(async () => {
+    runMongoose(dbConfig.options);
 
-    runMongoose(config.db.options);
+    console.log('Modules completely downloded!');
   });
 };
