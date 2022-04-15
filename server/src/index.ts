@@ -6,7 +6,6 @@ import cors from 'cors';
 import { getDbTypePath } from 'utils/helpers/getDbTypePath';
 import { PORT, HOST } from 'utils/helpers/constants';
 import { DbType } from 'types';
-import { Callback } from 'mongoose';
 
 const app = express();
 
@@ -19,7 +18,7 @@ app.use([
     extended: true,
   }), // to support URL-encoded bodies
   cors({
-    origin: '',
+    origin: `http://${HOST}:${PORT}/`,
   }),
 ]);
 
