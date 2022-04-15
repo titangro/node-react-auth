@@ -1,9 +1,9 @@
 import { Express } from 'express';
 import mongoose from 'mongoose';
 
-import { handleError } from 'helpers/handleError';
-import { DB_CONN, PORT, HOST } from 'helpers/constants';
-import { config } from 'config';
+import { handleError } from 'utils/helpers/handleError';
+import { DB_CONN, PORT, HOST } from 'utils/helpers/constants';
+import { config } from 'utils/config';
 
 import { initializeModules } from './modules';
 

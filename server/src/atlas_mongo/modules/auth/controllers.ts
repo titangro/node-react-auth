@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import { generateJwt } from 'helpers/generateJwt';
-import { getResponseError } from 'helpers/getResponseError';
+import { generateJwt } from 'utils/helpers/generateJwt';
+import { getResponseError } from 'utils/helpers/getResponseError';
 import { Controller } from 'types/request';
 import { UserModel } from './model';
 

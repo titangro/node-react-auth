@@ -2,7 +2,7 @@ import { DbMongoType } from './types/index';
 import express from 'express';
 import path from 'path';
 
-import { getDbTypePath } from './helpers/getDbTypePath';
+import { getDbTypePath } from './utils/helpers/getDbTypePath';
 import { DbType } from 'types';
 
 const app = express();

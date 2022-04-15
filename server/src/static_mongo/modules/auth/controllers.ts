@@ -1,8 +1,9 @@
 import bcrypt from 'bcrypt';
-import { generateJwt } from 'helpers/generateJwt';
-import { getResponseError } from 'helpers/getResponseError';
+import { generateJwt } from 'utils/helpers/generateJwt';
+import { getResponseError } from 'utils/helpers/getResponseError';
 import { Controller } from 'types/request';
 import { UserModel } from './model';
+import { UserEmailError, UserPasswordError } from 'utils/errors';
 
 // authentication
 export const signIn: Controller = async (req, res) => {
@@ -10,7 +11,7 @@ export const signIn: Controller = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email) {
-      throw new Error('User email is wrong');
+      throw new UserEmailError();
     }
 
     const userRecord = await UserModel.findOne({
@@ -31,7 +32,7 @@ export const signIn: Controller = async (req, res) => {
     );
 
     if (!isCorrectpassword) {
-      throw new Error('Incorrect password');
+      throw new UserPasswordError();
     }
 
     return res.json(
@@ -60,7 +61,7 @@ export const signUp: Controller = async (req, res) => {
     if (createdUser) {
       return getResponseError({
         res,
-        error: 'Such user  already exists',
+        error: 'Such user already exists',
         statusCode: 401,
       });
     }

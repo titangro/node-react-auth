@@ -1,7 +1,7 @@
 import { Express } from 'express';
-import { config } from 'config';
-import { PORT, HOST } from 'helpers/constants';
-import { runMongoose } from 'helpers/mongoClient';
+import { config } from 'utils/config';
+import { PORT, HOST } from 'utils/helpers/constants';
+import { runMongoose } from 'utils/helpers/mongoClient';
 
 import { initializeModules } from './modules';
 
