@@ -4,7 +4,8 @@ import { getResponseError } from 'helpers/getResponseError';
 import { Controller } from 'types/request';
 import { UserModel } from './model';
 
-export const login: Controller = async (req, res) => {
+// authentication
+export const signIn: Controller = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -46,6 +47,7 @@ export const login: Controller = async (req, res) => {
   }
 };
 
+// registration
 export const signUp: Controller = async (req, res) => {
   try {
     const { password, name, email } = req.body;

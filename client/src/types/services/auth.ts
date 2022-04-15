@@ -1,6 +1,6 @@
 export type User = {} | string | null;
 
-export interface authRouteLogin {
+export interface authRouteSignIn {
   email: string;
   password: string;
 }

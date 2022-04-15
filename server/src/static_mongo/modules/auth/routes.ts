@@ -1,4 +1,4 @@
-export const login = '/login';
+export const signIn = '/signin';
 
 export const signUp = '/signup';
 

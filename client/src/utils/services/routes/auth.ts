@@ -1,9 +1,9 @@
-import { authRouteLogin, authRouteSignUp } from 'types/services/auth';
+import { authRouteSignIn, authRouteSignUp } from 'types/services/auth';
 import { Method } from 'axios';
 
 export const authRoute = {
-  login: ({ email, password }: authRouteLogin) => ({
-    url: '/auth/login',
+  login: ({ email, password }: authRouteSignIn) => ({
+    url: '/auth/signin',
     method: 'POST' as Method,
     data: {
       email,

@@ -4,7 +4,7 @@ import * as routes from './routes';
 
 const router = Router();
 
-router.post(routes.login, controllers.login);
+router.post(routes.signIn, controllers.signIn);
 
 router.post(routes.signUp, controllers.signUp);
 
