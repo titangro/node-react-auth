@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { config } from 'utils/config';
+import { dbConfig } from 'utils/config';
 import { PORT, HOST } from 'utils/helpers/constants';
 import { runMongoose } from 'utils/helpers/mongoClient';
 
@@ -13,6 +13,8 @@ export const static_mongo = (app: Express) => {
 
     initializeModules({ app });
 
-    runMongoose(config.db.options);
+    runMongoose(dbConfig.options);
+
+    console.log('Modules completely downloded!');
   });
 };

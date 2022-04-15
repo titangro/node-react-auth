@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { generateJwt } from 'utils/helpers/generateJwt';
 import { getResponseError } from 'utils/helpers/getResponseError';
 import { Controller } from 'types/request';
-import { UserModel } from './model';
+import { UserModel } from 'models/user';
 import { UserEmailError, UserPasswordError } from 'utils/errors';
 
 // authentication
@@ -67,7 +67,6 @@ export const signUp: Controller = async (req, res) => {
     }
 
     const userRecord = await UserModel.create({
-      email,
       name,
       password: hashedPassword,
     });

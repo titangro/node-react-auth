@@ -1,7 +1,9 @@
 import { Document } from 'mongoose';
 
 export enum UserRoles {
-  Default = 'user'
+  User = 'user',
+  Admin = 'admin',
+  Moderator = 'moderator',
 }
 
 export interface User extends Document {
