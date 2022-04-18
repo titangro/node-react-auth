@@ -4,6 +4,7 @@ import { DbMongoType } from 'types';
 import { handleError } from './handleError';
 import { DB_CONN_MONGO_ATLAS } from './constants';
 import { dbConfig } from 'utils/config';
+import { initial } from 'models';
 
 const { HOST, PORT, DB } = dbConfig;
 
@@ -24,8 +25,10 @@ export const runMongoClient = async (cb?: Callback) => {
   try {
     await mongoClient.connect();
 
+    await initial();
+
     if (cb) {
-      await cb();
+      cb();
     }
   } catch (error) {
     console.dir(error);
