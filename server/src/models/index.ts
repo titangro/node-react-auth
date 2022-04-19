@@ -3,11 +3,9 @@ import { UserModel } from './user';
 import { RoleModel } from './role';
 import { UserRoles } from 'types/users';
 
-export default {
-  user: UserModel,
-  role: RoleModel,
-  ROLES: [UserRoles.User, UserRoles.Admin, UserRoles.Moderator],
-};
+const ROLES = [UserRoles.User, UserRoles.Admin, UserRoles.Moderator];
+
+export { UserModel, RoleModel, ROLES };
 
 const consoleSavedRole = (userRole: UserRoles) => {
   console.log(`added '${userRole}' to roles collection`);
