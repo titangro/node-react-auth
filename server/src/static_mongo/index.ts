@@ -15,6 +15,11 @@ export const static_mongo = (
   listener(async () => {
     runMongoose(dbConfig.options);
 
+<<<<<<< HEAD
+=======
+    runMongoose(dbConfig.options);
+
+>>>>>>> 53a74bb9e10380dc6544dbe4340467dca3da9e0f
     console.log('Modules completely downloded!');
   });
 };
