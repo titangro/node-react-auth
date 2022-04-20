@@ -25,14 +25,14 @@ export const runMongoClient = async (cb?: Callback) => {
   try {
     await mongoClient.connect();
 
-    await initial();
-
     if (cb) {
       cb();
     }
   } catch (error) {
     console.dir(error);
   } finally {
+    console.log('MongoClient is Stated!!!');
+
     await mongoClient.close();
   }
 };
@@ -46,6 +46,8 @@ export const runMongoose = (options?: ConnectOptions) => {
         connectionMongoPath,
         options,
       );
+
+      initial();
     })
     .catch(handleError);
 };

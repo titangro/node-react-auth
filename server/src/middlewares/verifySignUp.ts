@@ -7,18 +7,18 @@ export const checkDuplicateUsernameOrEmail: Middleware = async (
   res,
   next,
 ) => {
-  const { name, email } = req.body;
+  const { username, email } = req.body;
 
   try {
     const userByName = await UserModel.findOne({
-      name,
+      username,
     }).exec();
 
     if (userByName) {
       return getResponseError({
         res,
         statusCode: 400,
-        error: 'Failed! User name is already in use!',
+        error: 'Failed! Username is already in use!',
       });
     }
 

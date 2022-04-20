@@ -1,5 +1,5 @@
-import { atlas_mongo } from 'atlas_mongo';
-import { static_mongo } from 'static_mongo';
+import { atlas_mongo } from 'connections/atlas_mongo';
+import { static_mongo } from 'connections/static_mongo';
 import { GetDbTypePath } from 'types';
 
 export const getDbTypePath = ({ dbType, subDbType }: GetDbTypePath) => {

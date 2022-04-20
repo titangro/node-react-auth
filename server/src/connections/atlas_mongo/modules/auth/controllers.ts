@@ -55,7 +55,7 @@ export const login: Controller = async (req, res) => {
 export const signUp: Controller = async (req, res) => {
   try {
     // получаем данные Post запроса из body, хешируем пароль
-    const { password, name, email } = req.body;
+    const { password, username, email } = req.body;
     const passwordHashed = await bcrypt.hash(password, 10);
 
     // поиск уже зарегистрированного пользователя
@@ -76,7 +76,7 @@ export const signUp: Controller = async (req, res) => {
     const userRecord = await UserModel.create({
       password: passwordHashed,
       email,
-      name,
+      username,
     });
 
     return res.json(

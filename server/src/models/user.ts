@@ -1,5 +1,5 @@
 import { Schema, models, model } from 'mongoose';
-import { User, UserRoles } from 'types/users';
+import { User } from 'types/users';
 
 const userSchema = new Schema({
   email: {
@@ -12,7 +12,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  name: String,
+  username: String,
   role: {
     type: Schema.Types.ObjectId,
     ref: 'Role',
