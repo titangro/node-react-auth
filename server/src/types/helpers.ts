@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import { User } from './users';
 
-export type GetTokenFromHeaders = (req: Request) => string | undefined;
+export type GetToken = (req: Request) => string | undefined;
 
 type GetResponseErrorProps = {
   res: Response;

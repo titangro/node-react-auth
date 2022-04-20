@@ -1,11 +1,15 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
+import {
+  MONGO_HOST,
+  MONGO_PORT,
+  MONGO_DB,
+  SECRET_CODE,
+} from 'utils/helpers/constants';
 
 export const dbConfig = {
-  HOST: process.env.MONGO_HOST,
-  PORT: process.env.MONGO_PORT,
-  DB: process.env.MONGO_DB,
+  HOST: MONGO_HOST,
+  PORT: MONGO_PORT,
+  DB: MONGO_DB,
+  secret: SECRET_CODE,
   options: {
     useUnifiedTopology: true,
     useNewUrlParser: true,
