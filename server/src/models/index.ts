@@ -13,6 +13,10 @@ const consoleSavedRole = (userRole: UserRoles) => {
 
 export const initial = async () => {
   const estimatedDocumentCount = await RoleModel.estimatedDocumentCount();
+  console.log(
+    '🚀 ~ file: index.ts ~ line 16 ~ initial ~ estimatedDocumentCount',
+    estimatedDocumentCount,
+  );
 
   if (estimatedDocumentCount === 0) {
     try {

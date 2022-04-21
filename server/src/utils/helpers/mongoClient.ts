@@ -42,9 +42,8 @@ export const runMongoose = (options?: ConnectOptions) => {
     .connect(connectionMongoPath, options)
     .then(() => {
       console.log(
-        'MONGO IS CONNECTED with connectionMongoPath, options --> ',
+        'MONGO IS CONNECTED with connectionMongoPath --> ',
         connectionMongoPath,
-        options,
       );
 
       initial();
