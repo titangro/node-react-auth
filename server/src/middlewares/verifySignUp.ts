@@ -10,9 +10,17 @@ export const checkDuplicateUsernameOrEmail: Middleware = async (
   const { username, email } = req.body;
 
   try {
+    if (!username || !email) {
+      return getResponseError({
+        res,
+        statusCode: 400,
+        error: 'Failed! Username and email are required!',
+      });
+    }
+
     const userByName = await UserModel.findOne({
       username,
-    }).exec();
+    });
 
     if (userByName) {
       return getResponseError({

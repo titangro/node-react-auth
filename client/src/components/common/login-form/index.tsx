@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import { paths } from 'routes/paths';
 import { getWithBigFirstLetter } from 'utils/helpers/getWithBigFirstLetter';
 
-import { Input } from 'components/common/input';
+import { Input } from 'components/ui/input';
 import { FormErrors } from 'components/common/form-errors';
 import { authRoute } from 'utils/services/routes/auth';
 import { fetcher } from 'utils/api/fetcher';

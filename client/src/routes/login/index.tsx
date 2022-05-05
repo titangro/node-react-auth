@@ -1,4 +1,4 @@
 import React from 'react';
-import { LoginForm } from 'components/common/login-form';
+import { LoginPage } from 'pages/login';
 
-export const Login: React.FC = (props) => <LoginForm {...props} />;
+export const Login: React.FC = (props) => <LoginPage {...props} />;

@@ -1,4 +1,4 @@
-import { Schema, models, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { User } from 'types/users';
 
 const userSchema = new Schema({
@@ -12,12 +12,14 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  username: String,
-  role: {
+  username: {
+    type: String,
+  },
+  roles: {
     type: Schema.Types.ObjectId,
     ref: 'Role',
     // default: UserRoles.User,
   },
 });
 
-export const UserModel = models.User || model<User>('User', userSchema);
+export const UserModel = model<User>('User', userSchema);

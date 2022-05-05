@@ -77,6 +77,10 @@ export const signUp: Controller = async (req, res) => {
     const { password, username, email, roles } = req.body;
     const hashedPassword = await bcrypt.hash(password, 8);
 
+    if (!username) {
+      throw new Error('username is empty!');
+    }
+
     const userRecord = await UserModel.create({
       email,
       username,
@@ -95,7 +99,7 @@ export const signUp: Controller = async (req, res) => {
         name: 'user',
       });
 
-      userRecord.roles = [userRole._id];
+      userRecord.roles = [userRole?._id];
       userRecord.save();
     }
 

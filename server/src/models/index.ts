@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { UserModel } from './user';
 import { RoleModel } from './role';
 import { UserRoles } from 'types/users';

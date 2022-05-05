@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { dbConfig } from 'utils/config';
-import { UserModel, RoleModel, ROLES } from 'models';
+import { UserModel, RoleModel } from 'models';
 
 import { getToken } from 'utils/helpers/getToken';
 import { getResponseError } from 'utils/helpers/getResponseError';
@@ -10,18 +10,18 @@ import { JwtCustom } from 'types/jwt';
 import { UserRoles } from 'types/users';
 
 export const verifyToken: Middleware = async (req, res, next) => {
-  const token = getToken(req);
-  const { secret } = dbConfig;
-
-  if (!token) {
-    return getResponseError({
-      res,
-      statusCode: 403,
-      error: 'No token provided!',
-    });
-  }
-
   try {
+    const token = getToken(req);
+    const { secret } = dbConfig;
+
+    if (!token) {
+      return getResponseError({
+        res,
+        statusCode: 403,
+        error: 'No token provided!',
+      });
+    }
+
     const decoded = jwt.verify(token, secret) as JwtCustom;
 
     req.userId = decoded.id;
@@ -42,7 +42,7 @@ export const isAdmin: Middleware = async (req, res, next) => {
     const user = await UserModel.findById({ userId }).exec();
 
     const roles = await RoleModel.find({
-      _id: { $in: user.roles },
+      _id: { $in: user?.roles },
     });
 
     for (let i = 0; i < roles.length; i++) {
@@ -72,7 +72,7 @@ export const isModerator: Middleware = async (req, res, next) => {
     const user = await UserModel.findById({ userId }).exec();
 
     const roles = await RoleModel.find({
-      _id: { $in: user.roles },
+      _id: { $in: user?.roles },
     });
 
     for (let i = 0; i < roles.length; i++) {

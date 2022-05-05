@@ -1,4 +1,4 @@
 import React from 'react';
-import { UserProfile } from 'components/common/user-profile';
+import { ProfilePage } from 'pages/profile';
 
-export const Profile: React.FC = (props) => <UserProfile {...props} />;
+export const Profile: React.FC = (props) => <ProfilePage {...props} />;

@@ -8,11 +8,12 @@ export const getResponseError: GetResponseError = ({
   statusCode = DEFAULT_STATUS_CODE,
   error,
 }) => {
+  const errorMessage = error?.toString() || DEFAULT_ERROR_MESSAGE;
   const currentStatusCode =
     statusCode >= 100 && statusCode < 600 ? statusCode : DEFAULT_STATUS_CODE;
 
-  const errorExaption =
-    error instanceof Error ? error : new Error(error || DEFAULT_ERROR_MESSAGE);
-
-  return res.status(currentStatusCode).json(errorExaption);
+  return res.status(currentStatusCode).json({
+    error: currentStatusCode,
+    message: errorMessage,
+  });
 };
